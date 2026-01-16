@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		if bullets_node:
 			var bullet = bullet_scene.instantiate() as Bullet
 			bullet.global_position = global_position + Vector2(20,0)
-			bullet.vector = Vector2(20,0)
+			bullet.vector = Vector2(20,0) * 50
 			bullets_node.add_child(bullet)
 
 	# Get the input direction and handle the movement/deceleration.

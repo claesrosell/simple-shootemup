@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://tx5m0wg5s6or"]
+[gd_scene load_steps=7 format=3 uid="uid://tx5m0wg5s6or"]
 
 [ext_resource type="PackedScene" uid="uid://dhwbe0w7hqs7i" path="res://enemy.tscn" id="1_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dvrvgx84yk3wy" path="res://turret.tscn" id="2_7jktm"]
 [ext_resource type="PackedScene" uid="uid://c0uweha1nh5uy" path="res://level.tscn" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://ddrmmsvvsx3ww" path="res://camera_2d.gd" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bken1xn8w0mgd" path="res://hero.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://lxgdwscy1noi" path="res://bullet.tscn" id="5_7jktm"]
 
 [node name="Game" type="Node2D"]
 
@@ -25,3 +26,8 @@ speed_x = 40.0
 
 [node name="Hero" parent="." instance=ExtResource("4_fc0e3")]
 position = Vector2(-4, 338)
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Bullet" parent="Bullets" instance=ExtResource("5_7jktm")]
+position = Vector2(69, 335)

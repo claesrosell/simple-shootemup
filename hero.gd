@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
+var bullet_scene = preload("res://bullet.tscn")
+var bullets_node : Node2D
 
 const SPEED = 300.0
 const BASE_SPEED = 20.0
 const MOVE_SPEED = 40.0
+
+func _ready() -> void:
+	bullets_node = get_tree().root.get_node("Game/Bullets");
 
 func _physics_process(delta: float) -> void:
 
@@ -11,7 +16,12 @@ func _physics_process(delta: float) -> void:
 	var y_speed = 0
 
 	if Input.is_action_just_pressed("ui_accept"):
-		pass
+		if bullets_node:
+			var bullet = bullet_scene.instantiate() as Bullet
+			bullet.global_position = global_position + Vector2(20,0)
+			bullet.vector = Vector2(20,0)
+			bullets_node.add_child(bullet)
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x := Input.get_axis("ui_left", "ui_right" )

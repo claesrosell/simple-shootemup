@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bken1xn8w0mgd"]
+
+[ext_resource type="Texture2D" uid="uid://bxm2wdbpin4ri" path="res://icon.svg" id="1_780bu"]
+[ext_resource type="Script" uid="uid://ca88qq3f20ygf" path="res://hero.gd" id="1_p1r5x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1r5x"]
+radius = 12.0
+height = 50.0
+
+[node name="Hero" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_p1r5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.390625, 0.19726563)
+texture = ExtResource("1_780bu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_p1r5x")

@@ -1,7 +1,8 @@
 extends Camera2D
 
 @export var target: Node2D
-@export var speed2: float
+@export var speed_x: float
+@export var speed_y: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,5 +19,9 @@ func _process(delta: float) -> void:
 		pX = target.global_position.x
 		pY = target.global_position.y
 
-	position.x = pX #move_toward(position.x, pX, speed )
-	position.y = pY #move_toward(position.y, pY, speed )
+		position.x = move_toward(position.x, pX, speed_x )
+		position.y = move_toward(position.y, pY, speed_y )
+
+	else:
+		position.x = pX + speed_x * delta
+		position.y = pY + speed_y * delta

@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	var x_speed = BASE_SPEED
 	var y_speed = 0
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("player1_fire"):
 		if bullets_node:
 			var bullet = bullet_scene.instantiate() as Bullet
 			bullet.global_position = global_position + Vector2(20,0)
@@ -24,8 +24,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction_x := Input.get_axis("ui_left", "ui_right" )
-	var direction_y := Input.get_axis("ui_up", "ui_down" )
+	var direction_x := Input.get_axis("player1_left", "player1_right" )
+	var direction_y := Input.get_axis("player1_up", "player1_down" )
 
 	if direction_x:
 		x_speed += direction_x * MOVE_SPEED

@@ -38,8 +38,8 @@ position = Vector2(592, 528)
 
 [node name="EnemyPathSpawner" type="Node" parent="Enemies"]
 script = ExtResource("3_0b4ue")
-count = 5
-interval = 1.0
+count = 10
+interval = 0.5
 enemy = ExtResource("4_f2txt")
 enabled = true
 speed = 0.2

@@ -7,7 +7,7 @@ func _ready() -> void:
 	animation_player.play("moving")
 
 func _physics_process(delta: float) -> void:
-	if enabled:
+	if enabled && !(get_parent() is PathFollow2D):
 		position += Vector2(-100,0) * delta
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:

@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvrvgx84yk3wy"]
+[gd_scene load_steps=5 format=3 uid="uid://dvrvgx84yk3wy"]
 
 [ext_resource type="Texture2D" uid="uid://d23mhh5b4ofra" path="res://art/turret/turret-32x32.png" id="1_3oylf"]
+[ext_resource type="Script" uid="uid://oxlvasttoafi" path="res://turret.gd" id="1_c5apd"]
 [ext_resource type="Texture2D" uid="uid://dmajulwws0xjc" path="res://art/turret/turret-pipe-2x18.png" id="2_tjdg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjdg3"]
 size = Vector2(32, 25)
 
 [node name="Turret" type="Area2D"]
+script = ExtResource("1_c5apd")
 
 [node name="PipeSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_tjdg3")
+offset = Vector2(0, -9)
 
 [node name="TurretSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3oylf")

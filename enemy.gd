@@ -4,7 +4,7 @@ extends Node2D
 var bullet_scene = preload("res://enemy_bullet.tscn")
 var bullets_node : Node2D
 
-var enabled := false
+var enabled := true
 
 var fire_rate : float = 2
 var fire_time : float = 0
@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 			bullet.vector = Vector2(-20,0) * 30
 			bullets_node.add_child(bullet)
 
-func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	print("enabled")
-	enabled = true
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	enabled = false
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print("death?")
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	queue_free()

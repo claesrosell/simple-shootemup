@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhwbe0w7hqs7i"]
+[gd_scene load_steps=7 format=3 uid="uid://dhwbe0w7hqs7i"]
 
 [ext_resource type="Script" uid="uid://conb1tls1pxxl" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://bxm2wdbpin4ri" path="res://icon.svg" id="1_7k104"]
@@ -41,6 +41,9 @@ _data = {
 &"moving": SubResource("Animation_4gyqm")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(18, 18)
+
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_4gyqm")
 
@@ -56,5 +59,12 @@ libraries = {
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

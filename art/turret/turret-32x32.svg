@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="28.963094"
-     inkscape:cx="12.912985"
-     inkscape:cy="14.708374"
+     inkscape:zoom="45.254834"
+     inkscape:cx="11.269514"
+     inkscape:cy="-10.628699"
      inkscape:window-width="2560"
      inkscape:window-height="1371"
      inkscape:window-x="0"
@@ -79,5 +79,22 @@
        inkscape:export-filename="turret-pipe-2x18.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <g
+       id="g2"
+       transform="matrix(1.3266245,0,0,0.99989386,0.3464578,-4.493339e-4)"
+       inkscape:export-filename="laster-4x12.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="fill:#4a80e9;fill-opacity:1;stroke-width:0.264583"
+         d="m -0.81178549,-1.2280325 c 0.0556,0.2243061 0.24632079,0.22895741 0.29419604,0 0.0934921,-0.8966851 0.25752587,-1.7871918 0.25459273,-2.698683 -0.35318934,-0.409199 -0.46542567,-0.4067132 -0.79772388,-0.00566 -5.478e-4,0.9054475 0.16595673,1.8028938 0.24893511,2.7043406 z"
+         id="path1"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#4ae3e9;fill-opacity:1;stroke-width:0.264583"
+         d="m -0.81090355,-3.9047529 c 0.10007655,-0.133898 0.18853462,-0.1376638 0.29575413,0.014486 l -0.14390707,2.353414 z"
+         id="path2"
+         sodipodi:nodetypes="cccc" />
+    </g>
   </g>
 </svg>

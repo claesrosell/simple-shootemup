@@ -6,6 +6,7 @@ class_name EnemyPathSpawner
 @export var enemy : PackedScene
 @export var enabled : bool
 @export var speed : float
+@export var rotates : bool
 
 var instantiated_count : int = 0
 var time_left : float = 0
@@ -38,6 +39,7 @@ func _create_enemy() -> void:
 	if path != null:
 
 		var follw_path = PathFollow2D.new()
+		follw_path.rotates = rotates
 		path.add_child(follw_path)
 		var new_enemy = enemy.instantiate()
 		follw_path.add_child(new_enemy)

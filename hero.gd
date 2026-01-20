@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal health_updated(new_health:int)
+signal shield_updated(new_shield:int)
+
 var bullet_scene = preload("res://bullet.tscn")
 var bullets_node : Node2D
 
@@ -7,8 +10,15 @@ const SPEED = 300.0
 const BASE_SPEED = 20.0
 const MOVE_SPEED = 40.0
 
+var shield:int = 100
+var health:int = 100
+
 func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
+	
+	# Make sure that the labels in the HUD is updated by modifing the health
+	self.modify_health(0)
+	self.modify_shield(0)
 
 func _physics_process(delta: float) -> void:
 
@@ -37,3 +47,11 @@ func _physics_process(delta: float) -> void:
 	velocity.y = y_speed * SPEED * delta
 
 	move_and_slide()
+
+func modify_health(health_delta:int):
+	self.health = self.health + health_delta
+	self.health_updated.emit(self.health)
+
+func modify_shield(shield_delta:int):
+	self.shield = self.shield + shield_delta
+	self.shield_updated.emit(self.shield)

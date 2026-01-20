@@ -15,7 +15,7 @@ var health:int = 100
 
 func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
-	
+
 	# Make sure that the labels in the HUD is updated by modifing the health
 	self.modify_health(0)
 	self.modify_shield(0)

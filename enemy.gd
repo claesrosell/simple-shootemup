@@ -3,7 +3,7 @@ extends Node2D
 
 var bullet_scene = preload("res://enemy_bullet.tscn")
 var bullets_node : Node2D
-
+var game_node : Node2D
 var enabled := true
 
 var fire_rate : float = 2
@@ -11,7 +11,8 @@ var fire_time : float = 0
 
 func _ready() -> void:
 	animation_player.play("moving")
-	bullets_node = get_tree().root.get_node("Game/Bullets");
+	game_node = get_tree().root.get_node("Game")
+	bullets_node = get_tree().root.get_node("Game/Bullets")
 
 func _physics_process(delta: float) -> void:
 	if enabled && !(get_parent() is PathFollow2D):
@@ -33,5 +34,5 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 	pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("death")
+	self.game_node.modify_score(10)
 	animation_player.play("death")

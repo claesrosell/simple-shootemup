@@ -2,6 +2,8 @@ extends Area2D
 
 var movement_vector:= Vector2(0, -1)
 @export var speed := 500
+var health := 100
+var shield := 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

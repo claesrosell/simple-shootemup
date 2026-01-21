@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhwbe0w7hqs7i" path="res://enemy.tscn" id="4_f2txt"]
 [ext_resource type="Texture2D" uid="uid://dfl420qpmoa51" path="res://art/background.png" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://bfg7ifu7yxslh" path="res://sphere-enemy.tscn" id="6_n6hdu"]
+[ext_resource type="Texture2D" uid="uid://venejubvrhjy" path="res://art/Starfighter.png" id="7_n6hdu"]
 
 [sub_resource type="Curve2D" id="Curve2D_0b4ue"]
 _data = {
@@ -88,3 +89,8 @@ layer = -3
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_f2txt")
+
+[node name="Starfighter" type="Sprite2D" parent="CanvasLayer"]
+z_index = 3
+position = Vector2(1012, 142)
+texture = ExtResource("7_n6hdu")

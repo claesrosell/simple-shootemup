@@ -24,4 +24,4 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Hero:
-		body.apply_damage(4)
+		body.apply_damage(10)

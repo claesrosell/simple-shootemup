@@ -94,13 +94,14 @@ func apply_damage(damage_points:int) -> void:
 		print("Death")
 
 func _modify_health(health_value:int):
-	self.health = health_value
+	self.health = max(0, health_value)
 	self.health_updated.emit(self.health)
 
 func _modify_shield(shield_value:int):
-	self.shield = shield_value
+	self.shield = max(0, shield_value)
 	self.shield_updated.emit(self.shield)
 
 
 func _on_shield_timer_timeout() -> void:
-	_modify_shield( clamp(self.shield + 1, 0, 100) )	# Increase shield with 1
+	if self.health > 0:
+		_modify_shield( clamp(self.shield + 1, 0, 100) )	# Increase shield with 1

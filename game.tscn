@@ -43,12 +43,11 @@ label_settings = SubResource("LabelSettings_7jktm")
 [node name="Level" parent="." instance=ExtResource("2_feb5d")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(529, 337)
+position = Vector2(-415, 342)
 script = ExtResource("3_feb5d")
-speed_x = 40.0
 
 [node name="Hero" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(-4, 338)
+position = Vector2(-936, 354)
 
 [node name="Bullets" type="Node2D" parent="."]
 

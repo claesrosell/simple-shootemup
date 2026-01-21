@@ -4,13 +4,12 @@ class_name Hero
 signal health_updated(new_health:int)
 signal shield_updated(new_shield:int)
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var bullet_scene = preload("res://bullet.tscn")
 var bullets_node : Node2D
 
-const SPEED = 300.0
-const BASE_SPEED = 20.0
-const MOVE_SPEED = 40.0
-
+const MOVE_SPEED = 400.0
 const BULLET_SPEED = 2000.0
 
 var shield:int = 100
@@ -18,7 +17,7 @@ var health:int = 100
 
 enum BulletType { SINGLE, TRIPLE, TRIPLE2 }
 
-var bullet_type : BulletType = BulletType.TRIPLE
+var bullet_type : BulletType = BulletType.SINGLE
 
 func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
@@ -29,10 +28,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 
-	var x_speed = BASE_SPEED
+	var x_speed = GameManager.getShipBaseSpeed()
 	var y_speed = 0
 
-	fire()
+	if Input.is_action_just_pressed("player1_fire"):
+		fire()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -45,42 +45,44 @@ func _physics_process(delta: float) -> void:
 	if direction_y:
 		y_speed += direction_y * MOVE_SPEED
 
-	velocity.x = x_speed * SPEED * delta
-	velocity.y = y_speed * SPEED * delta
-
+	velocity.x = x_speed * delta * 60
+	velocity.y = y_speed * delta * 60
 	move_and_slide()
 
 func fire() -> void:
-	if Input.is_action_just_pressed("player1_fire"):
-		if bullets_node:
-			var bullet = bullet_scene.instantiate() as Bullet
-			bullet.global_position = global_position + Vector2(20,0)
-			bullet.vector = Vector2(1,0) * BULLET_SPEED
-			bullets_node.add_child(bullet)
+	if bullets_node:
+		var bullet = bullet_scene.instantiate() as Bullet
+		bullet.global_position = global_position + Vector2(20,0)
+		bullet.vector = Vector2(1,0) * BULLET_SPEED
+		bullets_node.add_child(bullet)
 
-			if bullet_type == BulletType.TRIPLE:
-				var bullet2 = bullet_scene.instantiate() as Bullet
-				bullet2.global_position = global_position + Vector2(20,-15)
-				bullet2.vector = Vector2(1,0) * BULLET_SPEED
-				bullets_node.add_child(bullet2)
+		if bullet_type == BulletType.TRIPLE:
+			var bullet2 = bullet_scene.instantiate() as Bullet
+			bullet2.global_position = global_position + Vector2(20,-15)
+			bullet2.vector = Vector2(1,0) * BULLET_SPEED
+			bullets_node.add_child(bullet2)
 
-				var bullet3 = bullet_scene.instantiate() as Bullet
-				bullet3.global_position = global_position + Vector2(20,15)
-				bullet3.vector = Vector2(1,0) * BULLET_SPEED
-				bullets_node.add_child(bullet3)
+			var bullet3 = bullet_scene.instantiate() as Bullet
+			bullet3.global_position = global_position + Vector2(20,15)
+			bullet3.vector = Vector2(1,0) * BULLET_SPEED
+			bullets_node.add_child(bullet3)
 
-			if bullet_type == BulletType.TRIPLE2:
-				var bullet2 = bullet_scene.instantiate() as Bullet
-				bullet2.global_position = global_position + Vector2(20,-10)
-				bullet2.vector = Vector2(2,-1).normalized() * BULLET_SPEED
-				bullets_node.add_child(bullet2)
+		if bullet_type == BulletType.TRIPLE2:
+			var bullet2 = bullet_scene.instantiate() as Bullet
+			bullet2.global_position = global_position + Vector2(20,-10)
+			bullet2.vector = Vector2(2,-1).normalized() * BULLET_SPEED
+			bullets_node.add_child(bullet2)
 
-				var bullet3 = bullet_scene.instantiate() as Bullet
-				bullet3.global_position = global_position + Vector2(20,10)
-				bullet3.vector = Vector2(2,1).normalized() * BULLET_SPEED
-				bullets_node.add_child(bullet3)
+			var bullet3 = bullet_scene.instantiate() as Bullet
+			bullet3.global_position = global_position + Vector2(20,10)
+			bullet3.vector = Vector2(2,1).normalized() * BULLET_SPEED
+			bullets_node.add_child(bullet3)
 
 func apply_damage(damage_points:int) -> void:
+
+	if damage_points > 0:
+		animation_player.play("hit")
+
 	var shield_value = self.shield
 	var health_value = self.health
 	var new_shield_value = shield_value - damage_points
@@ -101,7 +103,9 @@ func _modify_shield(shield_value:int):
 	self.shield = max(0, shield_value)
 	self.shield_updated.emit(self.shield)
 
-
 func _on_shield_timer_timeout() -> void:
 	if self.health > 0:
 		_modify_shield( clamp(self.shield + 1, 0, 100) )	# Increase shield with 1
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	apply_damage(20)

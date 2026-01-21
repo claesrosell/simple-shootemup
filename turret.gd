@@ -31,10 +31,10 @@ func _ready():
 func _physics_process(delta:float):
 	current_angle += sweep_speed * sweep_direction * delta
 
-	# Check the extremes and flip if neccessery	
+	# Check the extremes and flip if neccessery
 	if current_angle >= max_angle:
 		current_angle = max_angle
-		sweep_direction = -1 
+		sweep_direction = -1
 
 	elif current_angle <= min_angle:
 		current_angle = min_angle

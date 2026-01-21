@@ -2,15 +2,16 @@ extends Area2D
 class_name Bullet
 
 var vector: Vector2
-var start_time : int
+var time_left : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	start_time = Time.get_ticks_msec()
+	time_left = 0.75
 	pass
 
 func _physics_process(delta: float) -> void:
 	position += vector * delta
-	if Time.get_ticks_msec() - start_time > 1000:
+	time_left -= delta
+	if time_left < 0:
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

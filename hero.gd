@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Hero
 
 signal health_updated(new_health:int)
 signal shield_updated(new_shield:int)
@@ -17,7 +18,7 @@ var health:int = 100
 
 enum BulletType { SINGLE, TRIPLE, TRIPLE2 }
 
-var bullet_type : BulletType = BulletType.TRIPLE2
+var bullet_type : BulletType = BulletType.TRIPLE
 
 func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
@@ -59,12 +60,12 @@ func fire() -> void:
 
 			if bullet_type == BulletType.TRIPLE:
 				var bullet2 = bullet_scene.instantiate() as Bullet
-				bullet2.global_position = global_position + Vector2(20,-10)
+				bullet2.global_position = global_position + Vector2(20,-15)
 				bullet2.vector = Vector2(1,0) * BULLET_SPEED
 				bullets_node.add_child(bullet2)
 
 				var bullet3 = bullet_scene.instantiate() as Bullet
-				bullet3.global_position = global_position + Vector2(20,10)
+				bullet3.global_position = global_position + Vector2(20,15)
 				bullet3.vector = Vector2(1,0) * BULLET_SPEED
 				bullets_node.add_child(bullet3)
 

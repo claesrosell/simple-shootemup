@@ -17,3 +17,12 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Hero:
+		body.modify_shield(-4)
+		print("hit")

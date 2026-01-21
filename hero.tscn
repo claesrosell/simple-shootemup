@@ -19,3 +19,8 @@ texture = ExtResource("2_p1r5x")
 position = Vector2(-1, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_p1r5x")
+
+[node name="ShieldTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

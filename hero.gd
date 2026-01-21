@@ -24,8 +24,8 @@ func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
 
 	# Make sure that the labels in the HUD is updated by modifing the health
-	self.modify_health(0)
-	self.modify_shield(0)
+	self._modify_health(self.health)
+	self._modify_shield(self.shield)
 
 func _physics_process(delta: float) -> void:
 
@@ -80,11 +80,27 @@ func fire() -> void:
 				bullet3.vector = Vector2(2,1).normalized() * BULLET_SPEED
 				bullets_node.add_child(bullet3)
 
+func apply_damage(damage_points:int) -> void:
+	var shield_value = self.shield
+	var health_value = self.health
+	var new_shield_value = shield_value - damage_points
+	var new_health_value = health_value
+	if new_shield_value < 0:
+		new_health_value = new_health_value + new_shield_value # New shield value is negative so this will decrease health
+		new_shield_value = 0
+	_modify_health(new_health_value)
+	_modify_shield(new_shield_value)
+	if new_health_value <= 0:
+		print("Death")
 
-func modify_health(health_delta:int):
-	self.health = self.health + health_delta
+func _modify_health(health_value:int):
+	self.health = health_value
 	self.health_updated.emit(self.health)
 
-func modify_shield(shield_delta:int):
-	self.shield = self.shield + shield_delta
+func _modify_shield(shield_value:int):
+	self.shield = shield_value
 	self.shield_updated.emit(self.shield)
+
+
+func _on_shield_timer_timeout() -> void:
+	_modify_shield( clamp(self.shield + 1, 0, 100) )	# Increase shield with 1

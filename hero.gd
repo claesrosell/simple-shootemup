@@ -10,8 +10,14 @@ const SPEED = 300.0
 const BASE_SPEED = 20.0
 const MOVE_SPEED = 40.0
 
+const BULLET_SPEED = 2000.0
+
 var shield:int = 100
 var health:int = 100
+
+enum BulletType { SINGLE, TRIPLE, TRIPLE2 }
+
+var bullet_type : BulletType = BulletType.TRIPLE2
 
 func _ready() -> void:
 	bullets_node = get_tree().root.get_node("Game/Bullets");
@@ -25,12 +31,7 @@ func _physics_process(delta: float) -> void:
 	var x_speed = BASE_SPEED
 	var y_speed = 0
 
-	if Input.is_action_just_pressed("player1_fire"):
-		if bullets_node:
-			var bullet = bullet_scene.instantiate() as Bullet
-			bullet.global_position = global_position + Vector2(20,0)
-			bullet.vector = Vector2(20,0) * 50
-			bullets_node.add_child(bullet)
+	fire()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -47,6 +48,37 @@ func _physics_process(delta: float) -> void:
 	velocity.y = y_speed * SPEED * delta
 
 	move_and_slide()
+
+func fire() -> void:
+	if Input.is_action_just_pressed("player1_fire"):
+		if bullets_node:
+			var bullet = bullet_scene.instantiate() as Bullet
+			bullet.global_position = global_position + Vector2(20,0)
+			bullet.vector = Vector2(1,0) * BULLET_SPEED
+			bullets_node.add_child(bullet)
+
+			if bullet_type == BulletType.TRIPLE:
+				var bullet2 = bullet_scene.instantiate() as Bullet
+				bullet2.global_position = global_position + Vector2(20,-10)
+				bullet2.vector = Vector2(1,0) * BULLET_SPEED
+				bullets_node.add_child(bullet2)
+
+				var bullet3 = bullet_scene.instantiate() as Bullet
+				bullet3.global_position = global_position + Vector2(20,10)
+				bullet3.vector = Vector2(1,0) * BULLET_SPEED
+				bullets_node.add_child(bullet3)
+
+			if bullet_type == BulletType.TRIPLE2:
+				var bullet2 = bullet_scene.instantiate() as Bullet
+				bullet2.global_position = global_position + Vector2(20,-10)
+				bullet2.vector = Vector2(2,-1).normalized() * BULLET_SPEED
+				bullets_node.add_child(bullet2)
+
+				var bullet3 = bullet_scene.instantiate() as Bullet
+				bullet3.global_position = global_position + Vector2(20,10)
+				bullet3.vector = Vector2(2,1).normalized() * BULLET_SPEED
+				bullets_node.add_child(bullet3)
+
 
 func modify_health(health_delta:int):
 	self.health = self.health + health_delta

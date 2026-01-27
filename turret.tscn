@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvrvgx84yk3wy"]
+[gd_scene format=3 uid="uid://dvrvgx84yk3wy"]
 
 [ext_resource type="Texture2D" uid="uid://d23mhh5b4ofra" path="res://art/turret/turret-32x32.png" id="1_3oylf"]
 [ext_resource type="Script" uid="uid://oxlvasttoafi" path="res://turret.gd" id="1_c5apd"]
@@ -7,30 +7,30 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjdg3"]
 size = Vector2(32, 25)
 
-[node name="Turret" type="Area2D"]
+[node name="Turret" type="Area2D" unique_id=512998960]
 script = ExtResource("1_c5apd")
 
-[node name="PipeSprite" type="Sprite2D" parent="."]
+[node name="PipeSprite" type="Sprite2D" parent="." unique_id=246097193]
 texture = ExtResource("2_tjdg3")
 offset = Vector2(0, -9)
 
-[node name="TurretSprite" type="Sprite2D" parent="."]
+[node name="TurretSprite" type="Sprite2D" parent="." unique_id=1880244987]
 texture = ExtResource("1_3oylf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=514550744]
 root_node = NodePath("../TurretSprite")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1016648802]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_tjdg3")
 
-[node name="LaserCreationPoint" type="Node2D" parent="."]
+[node name="LaserCreationPoint" type="Node2D" parent="." unique_id=1722959299]
 position = Vector2(0, -20)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=42490642]
 autostart = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=470737946]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

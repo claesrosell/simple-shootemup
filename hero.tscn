@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bken1xn8w0mgd"]
+[gd_scene format=3 uid="uid://bken1xn8w0mgd"]
 
 [ext_resource type="Script" uid="uid://ca88qq3f20ygf" path="res://hero.gd" id="1_p1r5x"]
 [ext_resource type="Texture2D" uid="uid://venejubvrhjy" path="res://art/Starfighter.png" id="2_p1r5x"]
@@ -58,32 +58,30 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1ipw"]
 size = Vector2(93, 35)
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" unique_id=770921980]
 collision_layer = 2
 script = ExtResource("1_p1r5x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=536321140]
 material = SubResource("ShaderMaterial_xpv8o")
 texture = ExtResource("2_p1r5x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1536954324]
 position = Vector2(-1, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_p1r5x")
 
-[node name="ShieldTimer" type="Timer" parent="."]
+[node name="ShieldTimer" type="Timer" parent="." unique_id=600921407]
 autostart = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wgyg4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1501436080]
+libraries/ = SubResource("AnimationLibrary_wgyg4")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1567494343]
 collision_layer = 2
 collision_mask = 21
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1539991848]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_u1ipw")
 debug_color = Color(0.92233, 5.2366257e-05, 0.6898059, 0.41960785)

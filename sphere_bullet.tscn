@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://duhw5t0vxi4sr"]
+[gd_scene format=3 uid="uid://duhw5t0vxi4sr"]
 
 [ext_resource type="Script" uid="uid://1td6um3yas1l" path="res://enemy_bullet.gd" id="1_7lmgh"]
 [ext_resource type="Texture2D" uid="uid://dg5o4fx4e4d76" path="res://art/sphere_bullet.png" id="2_7lmgh"]
@@ -6,12 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od1j0"]
 size = Vector2(16, 6)
 
-[node name="SphereBullet" type="Area2D"]
+[node name="SphereBullet" type="Area2D" unique_id=701831575]
 collision_layer = 16
 script = ExtResource("1_7lmgh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1948077596]
 shape = SubResource("RectangleShape2D_od1j0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053319084]
 texture = ExtResource("2_7lmgh")

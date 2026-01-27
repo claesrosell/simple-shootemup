@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfg7ifu7yxslh"]
+[gd_scene format=3 uid="uid://bfg7ifu7yxslh"]
 
 [ext_resource type="Script" uid="uid://opt0w2f40mlg" path="res://sphere_enemy.gd" id="1_ianaj"]
 [ext_resource type="Shader" uid="uid://c3rw2ls2qbkrx" path="res://damage_flash.gdshader" id="2_erbgv"]
@@ -289,32 +289,30 @@ radial_velocity_max = 152.93997
 gravity = Vector3(0, 0, 0)
 scale_min = 0.19999999
 
-[node name="SphereEnemy" type="Node2D"]
+[node name="SphereEnemy" type="Node2D" unique_id=2101611254]
 script = ExtResource("1_ianaj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1144215048]
 visible = false
 material = SubResource("ShaderMaterial_epg4t")
 texture = ExtResource("3_ianaj")
 hframes = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_iifgy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=686605079]
+libraries/ = SubResource("AnimationLibrary_iifgy")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=400308531]
 rect = Rect2(-16, -10, 32, 20)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1425373834]
 collision_layer = 4
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1488093577]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4gyqm")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=145315670]
 visible = false
 emitting = false
 amount = 20

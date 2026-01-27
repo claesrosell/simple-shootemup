@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tx5m0wg5s6or"]
+[gd_scene format=3 uid="uid://tx5m0wg5s6or"]
 
 [ext_resource type="Script" uid="uid://bfyl1hyesbhc4" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://qleh178iaqcf" path="res://hud.gd" id="2_7jktm"]
@@ -11,20 +11,20 @@ font_size = 20
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=324928709]
 script = ExtResource("1_fc0e3")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1640874536]
 script = ExtResource("2_7jktm")
 
-[node name="Score" type="Label" parent="HUD"]
+[node name="Score" type="Label" parent="HUD" unique_id=1691119782]
 offset_left = 12.0
 offset_right = 105.0
 offset_bottom = 32.0
 text = "Score : -1"
 label_settings = SubResource("LabelSettings_7jktm")
 
-[node name="Health" type="Label" parent="HUD"]
+[node name="Health" type="Label" parent="HUD" unique_id=2012409420]
 offset_left = 9.0
 offset_top = 655.0
 offset_right = 124.0
@@ -32,7 +32,7 @@ offset_bottom = 683.0
 text = "Health : -1"
 label_settings = SubResource("LabelSettings_7jktm")
 
-[node name="Shield" type="Label" parent="HUD"]
+[node name="Shield" type="Label" parent="HUD" unique_id=1412217554]
 offset_left = 10.0
 offset_top = 684.0
 offset_right = 136.0
@@ -40,15 +40,15 @@ offset_bottom = 712.0
 text = "Shield : -1"
 label_settings = SubResource("LabelSettings_7jktm")
 
-[node name="Level" parent="." instance=ExtResource("2_feb5d")]
+[node name="Level" parent="." unique_id=2030668734 instance=ExtResource("2_feb5d")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1718340037]
 position = Vector2(-415, 342)
 script = ExtResource("3_feb5d")
 
-[node name="Hero" parent="." instance=ExtResource("4_fc0e3")]
+[node name="Hero" parent="." unique_id=438968086 instance=ExtResource("4_fc0e3")]
 position = Vector2(-936, 354)
 
-[node name="Bullets" type="Node2D" parent="."]
+[node name="Bullets" type="Node2D" parent="." unique_id=1505240373]
 
 [connection signal="score_updated" from="." to="." method="_on_score_updated"]

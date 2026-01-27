@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvv1qf07q1gya"]
+[gd_scene format=3 uid="uid://bvv1qf07q1gya"]
 
 [ext_resource type="Script" uid="uid://bnsttvdohd0da" path="res://turret_laser.gd" id="1_hpnhg"]
 [ext_resource type="Texture2D" uid="uid://c4i6cwvya0p1x" path="res://art/turret/laster-4x12.png" id="2_jg5el"]
@@ -6,17 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlpfk"]
 size = Vector2(4, 12.5)
 
-[node name="TurretLaser" type="Area2D"]
+[node name="TurretLaser" type="Area2D" unique_id=1360069351]
 script = ExtResource("1_hpnhg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1268558040]
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_hlpfk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236360420]
 texture = ExtResource("2_jg5el")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=55033855]
 rect = Rect2(-2, -6, 4, 13)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpwteesuu3epb"]
+[gd_scene format=3 uid="uid://dpwteesuu3epb"]
 
 [ext_resource type="Texture2D" uid="uid://dic2ewui05rxb" path="res://art/enemy_bullet.png" id="1_1xapl"]
 [ext_resource type="Script" uid="uid://1td6um3yas1l" path="res://enemy_bullet.gd" id="1_gl7bs"]
@@ -6,15 +6,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_gl7bs"]
 radius = 5.0
 
-[node name="EnemyBullet" type="Area2D"]
+[node name="EnemyBullet" type="Area2D" unique_id=1409376345]
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_gl7bs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1742913249]
 shape = SubResource("CircleShape2D_gl7bs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2050308907]
 texture = ExtResource("1_1xapl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
